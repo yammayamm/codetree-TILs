@@ -9,9 +9,12 @@ def dfs(idx, money):
         result = max(result, money)
         return
     for i in range(idx, len(work)):
-        if not visited[i] and i+work[i][0] <= n:
-            visited[i] = True
-            dfs(i+work[i][0], money + work[i][1])
-            visited[i] = False
+        if not visited[i]:
+            if i+work[i][0] <= n:
+                visited[i] = True
+                dfs(i+work[i][0], money + work[i][1])
+                visited[i] = False
+            else:
+                result = max(result, money)
 dfs(0, 0)
 print(result)
