@@ -22,7 +22,7 @@ for _ in range(m):
                     if 0<=i+dx[k]<n and 0<=j+dy[k]<n and board[i+dx[k]][j+dy[k]] > 0:
                         tmp += 1
                 board[i][j] += tmp
-            if board[i][j]<0:
+            if -999999<board[i][j]<0:
                 board[i][j] += 1
     # 2. 나무의 번식
     new_board = copy.deepcopy(board)
@@ -45,7 +45,7 @@ for _ in range(m):
                 die = board[i][j]
                 for k in range(4):
                     for l in range(kk):
-                        if 0<=i+vx[k]*(l+1)<n and 0<=j+vy[k]*(l+1)<n and board[i+vx[k]*(l+1)][j+vy[k]*(l+1)] > 0:
+                        if 0<=i+vx[k]*(l+1)<n and 0<=j+vy[k]*(l+1)<n and board[i+vx[k]*(l+1)][j+vy[k]*(l+1)] not in [-999999, 0]:
                             die += board[i+vx[k]*(l+1)][j+vy[k]*(l+1)]
                         else:
                             break
@@ -55,7 +55,7 @@ for _ in range(m):
     board[die_tree[1]][die_tree[2]] = -c -1
     for k in range(4):
         for l in range(kk):
-            if 0<=die_tree[1]+vx[k]*(l+1)<n and 0<=die_tree[2]+vy[k]*(l+1)<n and board[die_tree[1]+vx[k]*(l+1)][die_tree[2]+vy[k]*(l+1)] > -1:
+            if 0<=die_tree[1]+vx[k]*(l+1)<n and 0<=die_tree[2]+vy[k]*(l+1)<n and board[die_tree[1]+vx[k]*(l+1)][die_tree[2]+vy[k]*(l+1)] not in [-999999, 0]:
                 board[die_tree[1]+vx[k]*(l+1)][die_tree[2]+vy[k]*(l+1)] = -c-1
             else:
                 break
