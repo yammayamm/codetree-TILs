@@ -22,12 +22,11 @@ for r,c,h,w,k in sold:
 
 def check(i,d):
     global stack
-    #visited = [False for _ in range(len(sold))]
     for j in sold_dic[i]:
-        # if not visited[i-1]:
-        #     stack.extend(sold_dic[i])
-        #     visited[i-1] = True
-        stack.append(j)
+        if not visited[i-1]:
+            stack.extend(sold_dic[i])
+            visited[i-1] = True
+        #stack.append(j)
         nx, ny = j[0]+dx[d], j[1]+dy[d]
         if nx<0 or nx>=L or ny<0 or ny>=L or board[nx][ny]==2: # 벽이면 이동 못함
             return False
@@ -45,6 +44,8 @@ def move(i,d,stack): # (0,-1)
         x,y = stack.pop()
         nx,ny = x+dx[d], y+dy[d]
         num = sold_map[x][y]
+        if num == 0:
+            return
         sold_dic[num].pop()
         sold_dic[num] = [[nx,ny],*sold_dic[num]]
         sold_map[nx][ny] = num
@@ -57,8 +58,8 @@ def move(i,d,stack): # (0,-1)
         if board[j[0]][j[1]] == 1: # 기사가 함정에 들어가면
             damage_cnt[num-1] += 1
     for k in range(len(sold)):
-        if sold[num-1][-1] <= damage_cnt[num-1]: # 체력이 소진되면 사라짐
-            damage_cnt[num-1] = 0
+        if sold[k][-1] <= damage_cnt[k]: # 체력이 소진되면 사라짐
+            damage_cnt[k] = 0
             for j in sold_dic[num]:
                 sold_map[j[0]][j[1]] = 0
             sold_dic[num] = []
@@ -66,6 +67,7 @@ def move(i,d,stack): # (0,-1)
 damage_cnt = [0 for _ in range(len(sold))]
 for i,d in order: # 3,3(왼쪽)
     stack = []
+    visited = [False for _ in range(len(sold))]
     if check(i,d):
         move(i,d,stack)
 print(sum(damage_cnt))
