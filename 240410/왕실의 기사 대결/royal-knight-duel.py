@@ -29,7 +29,7 @@ def check(i,d):
         #     visited[i-1] = True
         stack.append(j)
         nx, ny = j[0]+dx[d], j[1]+dy[d]
-        if nx<0 or nx>L or ny<0 or ny>L or board[nx][ny]==2: # 벽이면 이동 못함
+        if nx<0 or nx>=L or ny<0 or ny>=L or board[nx][ny]==2: # 벽이면 이동 못함
             return False
         elif sold_map[nx][ny] in [0,i]: # 자기자신이거나 빈칸이면
             continue
