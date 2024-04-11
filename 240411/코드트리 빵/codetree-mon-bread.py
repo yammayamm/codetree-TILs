@@ -37,7 +37,6 @@ def bfs(sy,sx): # bfs 시작 좌표를 매개변수로 받아옴
                 q.append((Y, X))
 
 def enterBaseCamp(time):
-    #global m,n,d,board,person
     cy,cx=store[time]
     bfs(cy, cx)
     dist = 1e9  # 최단거리값
@@ -54,7 +53,6 @@ def enterBaseCamp(time):
 idx = 0
 while True:
     # [1] 가고 싶은 편의점 방향으로 1칸 이동 (최단 거리로 상,좌,우,하 순)
-    # [1-1] 4방향 최단거리 구하기
     dist = []
     for key in list(person.keys()):
         pi,pj = person[key]
@@ -77,21 +75,6 @@ while True:
     # [3-1] 가고 싶은 편의점과 가장 가까운 베이스캠프를 구해서 이동
     if idx < m:
         enterBaseCamp(idx) 
-        # dist = 1e9
-        # short_camp = 0
-        # si,sj = store[idx][0], store[idx][1]
-        # bfs(si,sj)
-        # by, bx = -1, -1
-        # for i in range(len(camp)):
-        #     if camp[i] == -1:
-        #         continue
-        #     ci, cj = camp[i][0], camp[i][1]
-        #     if visited[] abs(si - ci) + abs(sj-cj) < dist:
-        #         dist = abs(si - ci) + abs(sj-cj)
-        #         short_camp = i
-        # person[idx] = camp[short_camp]
-        # board[camp[short_camp][0]][camp[short_camp][1]] = -1
-        # camp[short_camp] = -1
     idx+= 1
     if len(person) == 0:
         break
