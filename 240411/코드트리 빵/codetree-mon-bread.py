@@ -68,8 +68,10 @@ while True:
                 ty, tx =ni,nj
                 dist = step[ni][nj]
         person[key] = [ty, tx]
-        # 편의점 도착시 -1로 바꿈
+    # [2] 편의점 도착시 -1로 바꿈
+    for key in list(person.keys()):
         if person[key] == store[key]:
+            si,sj = store[key]
             board[si][sj] = -1
             del person[key]
     # [3-1] 가고 싶은 편의점과 가장 가까운 베이스캠프를 구해서 이동
