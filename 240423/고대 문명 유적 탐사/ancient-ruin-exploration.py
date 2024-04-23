@@ -30,8 +30,9 @@ def get_score(board_copy):
                     score += temp
                     path.extend(temp_path)
     return score
-answer = 0
+answer_list = []
 for _ in range(K):
+    answer = 0
     all_score = []
     for i in range(3):
         for j in range(3):
@@ -80,4 +81,5 @@ for _ in range(K):
         answer += score
         if score==0:
             break
-print(answer)
+    answer_list.append(answer)
+print(*answer_list)
