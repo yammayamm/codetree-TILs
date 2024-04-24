@@ -1,11 +1,13 @@
-# [싸움땅 ![Gold2][g2]](https://www.codetree.ai/training-field/frequent-problems/problems/battle-ground)
+# 📖 학습하기
 
-|유형|출처|
-|---|---|
-|[Simulation](https://www.codetree.ai/training-field/search/?tags=Simulation)|[기출문제](https://www.codetree.ai/training-field/frequent-problems)|
+# 🥇 실전 훈련
+|총 문제 수|티어|유형|
+|---:|---|---|
+|1|![Gold2][g2] ~ ![Gold2][g2]|`Simulation`|
 
-
-
+|기록분류|이름|티어|유형|상태|최근 제출 코드|
+|---|---|---|---|---|---|
+|기출문제|[싸움땅](https://www.codetree.ai/training-field/frequent-problems/problems/battle-ground)|![Gold2][g2]|`Simulation`|![Passed][passed]|[링크](https://github.com/yammayamm/codetree-TILs/blob/main/240412/%EC%8B%B8%EC%9B%80%EB%95%85/battle-ground.py)|
 
 
 
